@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- Root Element -->
+    <xs:element name="riddle">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="intro" type="richText" minOccurs="1" maxOccurs="1" />
+                <xs:element name="outro" type="xs:string" minOccurs="0" maxOccurs="1" />
+                <xs:element name="before" type="imageBlock" minOccurs="0" maxOccurs="1" />
+                <xs:element name="after" type="xs:string" minOccurs="0" maxOccurs="1" />
+                <xs:element name="style" type="xs:string" minOccurs="0" maxOccurs="1" />
+                <xs:element name="groups">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="group" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute name="id" type="xs:string" use="required" />
+                                            <xs:attribute name="sort" type="xs:string" use="optional" />
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="data">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="entry" type="entryType" maxOccurs="unbounded" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="clues">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="clue" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="ref" type="refType" minOccurs="0" maxOccurs="unbounded" />
+                                    </xs:sequence>
+                                    <xs:attribute name="text" type="xs:string" use="optional" />
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="title" type="xs:string" use="required" />
+            <xs:attribute name="author" type="xs:string" use="optional" />
+            <xs:attribute name="source" type="xs:string" use="optional" />
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Reusable Types -->
+    <xs:complexType name="valueType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="group" type="xs:string" use="required" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="refType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="group" type="xs:string" use="required" />
+                <xs:attribute name="entry" type="xs:positiveInteger" use="required" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="entryType">
+        <xs:sequence>
+            <xs:element name="value" type="valueType" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Custom Types -->
+    <xs:complexType name="richText">
+        <xs:sequence>
+            <xs:element name="p" type="xs:string" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="imageBlock">
+        <xs:sequence />
+        <xs:attribute name="src" type="xs:string" use="required" />
+        <xs:attribute name="style" type="xs:string" use="optional" />
+    </xs:complexType>
+
+</xs:schema>

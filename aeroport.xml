@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<riddle xmlns="https://bobanum.github.io/riddle/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://bobanum.github.io/riddle/ https://bobanum.github.io/riddle/schema.xsd" title="À l'aéroport" source="Le cube de jeux. #273">
+    <intro>
+        <p>Cinq hommes travaillent à l'aéroport. Ils occupent des postes différents et n'ont pas tous commencé à travailler en même temps. </p>
+        <p>Quel est le nom de chacun, son poste et son ancienneté?</p>
+    </intro>
+    <outro/>
+    <before>
+        <img src="img/aeroport.svg" style="position: absolute; right: .5in; top: 155mm; height: 57mm;" />
+    </before>
+    <after/>
+    <style>
+        .tableau {
+            font-size:12pt;
+        } 
+        html {
+            font-size:11pt;
+        }
+        table {
+            --largeur:11ch;
+        }
+    </style>
+    <groups>
+        <group id="anciennete" sort="alpha">Ancienneté</group>
+        <group id="nom" sort="alpha">Nom</group>
+        <group id="prenom" sort="alpha">Prénom</group>
+        <group id="poste" sort="alpha">Poste</group>
+    </groups>
+    <data>
+        <entry>
+            <value group="anciennete">4 ans</value>
+            <value group="nom">Ledoux</value>
+            <value group="prenom">Mathieu</value>
+            <value group="poste">Gardien de sécurité</value>
+        </entry>
+        <entry>
+            <value group="anciennete">5 ans</value>
+            <value group="nom">Forest</value>
+            <value group="prenom">Quentin</value>
+            <value group="poste">Électricien</value>
+        </entry>
+        <entry>
+            <value group="anciennete">6 ans</value>
+            <value group="nom">Bouchard</value>
+            <value group="prenom">Daniel</value>
+            <value group="poste">Préposé aux bagages</value>
+        </entry>
+        <entry>
+            <value group="anciennete">7 ans</value>
+            <value group="nom">Anderson</value>
+            <value group="prenom">Laurent</value>
+            <value group="poste">Contrôleur aérien</value>
+        </entry>
+        <entry>
+            <value group="anciennete">8 ans</value>
+            <value group="nom">Maréchal</value>
+            <value group="prenom">Benoît</value>
+            <value group="poste">Annonceur</value>
+        </entry>
+    </data>
+    <clues>
+        <clue>Le <ref group="poste" entry="3">préposé aux bagages</ref> s'est joint à l'équipe il y a <ref group="anciennete" entry="3">six ans</ref>.
+        </clue>
+        <clue>L'<ref group="poste" entry="2">électricien</ref> travaille à l'aéroport depuis plus longtemps que <ref group="nom" entry="1">Ledoux</ref>.
+        </clue>
+        <clue>
+            <ref group="prenom" entry="2">Quentin</ref> travaille à l'aéroport depuis <ref group="anciennete" entry="2">cinq ans</ref>.
+        </clue>
+        <clue>
+            <ref group="poste" entry="4">Le contrôleur aérien</ref> travaille là depuis plus longtemps que <ref group="prenom" entry="3">Daniel</ref>, mais moins longtemps que <ref group="nom" entry="5">Maréchal</ref>.
+        </clue>
+        <clue>
+            <ref group="nom" entry="2">Forest</ref> n'est pas employé depuis plus longtemps que <ref group="nom" entry="3">Bouchard</ref>.
+        </clue>
+        <clue>
+            <ref group="prenom" entry="1"></ref> adore son travail de <ref group="poste" entry="1">gardien de sécurité</ref>.
+        </clue>
+        <clue>
+            <ref group="prenom" entry="4">Laurent</ref>
+            <ref group="nom" entry="4">Anderson</ref> ne travaille pas à l'aéroport depuis aussi longtemps que <ref group="nom" entry="5">celui dont on entend la voix régulièrement</ref>.
+        </clue>
+    </clues>
+</riddle>
