@@ -1,0 +1,33 @@
+#interface {
+	min-height: 100%;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	grid-template-columns: auto 1fr;
+	grid-template-areas: "h n" "m m" "f f";
+	& > header, & > footer {
+		padding: .5em 1em;
+		background-color: hsl(var(--h), var(--s), 30%);
+		color: hsl(var(--h), var(--s), 100%);
+		display: flex;
+		justify-content: space-between;
+	}
+	& > header {
+		grid-area: h;
+		justify-content: center;
+		align-items: center;
+		gap: 1em;
+		order: -1000;
+	}
+	& > nav {
+		grid-area: n;
+		background-color: hsl(var(--h), var(--s), 35%);
+		color: hsl(var(--h), var(--s), 100%);
+	}
+	& > main {
+		grid-area: m;
+	}
+	& > footer {
+		grid-area: f;
+		order: 1000;
+	}
+}

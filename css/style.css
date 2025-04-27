@@ -1,0 +1,262 @@
+@charset "UTF-8";
+@import 'fonts/retro.css';
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap");
+:root {
+  --h: 240;
+  --s: 0%;
+  --l: 50%;
+  --font-family: "Roboto", sans-serif;
+  --font-titre: "Roboto Slab", serif;
+}
+
+html {
+  font-size: 16px;
+  font-family: var(--font-body);
+}
+
+body {
+  height: 100vh;
+}
+
+h1,
+h3,
+.heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+h2,
+h4,
+th,
+legend,
+caption,
+label,
+figcaption,
+.subheading {
+  font-family: var(--font-subheading);
+  font-weight: 400;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#interface {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "h n" "m m" "f f";
+}
+#interface > header, #interface > footer {
+  padding: 0.5em 1em;
+  background-color: hsl(var(--h), var(--s), 30%);
+  color: hsl(var(--h), var(--s), 100%);
+  display: flex;
+  justify-content: space-between;
+}
+#interface > header {
+  grid-area: h;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  order: -1000;
+}
+#interface > nav {
+  grid-area: n;
+  background-color: hsl(var(--h), var(--s), 35%);
+  color: hsl(var(--h), var(--s), 100%);
+}
+#interface > main {
+  grid-area: m;
+}
+#interface > footer {
+  grid-area: f;
+  order: 1000;
+}
+
+nav {
+  display: grid;
+  place-items: end;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+}
+nav ul li {
+  display: flex;
+}
+nav ul li a {
+  flex-grow: 1;
+  display: flex;
+  padding: 6px 12px;
+}
+nav ul li a:hover {
+  text-decoration: underline;
+  background: #333;
+  color: #fff;
+}
+
+#app {
+  padding: 1em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2em auto repeat(12, 2em);
+  grid-template-rows: 2em auto repeat(12, 2em);
+  place-content: start;
+}
+.grid * {
+  display: grid;
+}
+.grid h1 {
+  margin: 0;
+  line-height: 1;
+  place-items: center;
+  font-size: 1.2em;
+}
+.grid .group {
+  margin: 1px;
+  border: 1px solid #666;
+}
+.grid .checks {
+  grid-template: subgrid/subgrid;
+  grid-area: 3/3/-1/-1;
+}
+
+header.h {
+  grid-column: 3/-1;
+  grid-template: subgrid/subgrid;
+  grid-row: 1/3;
+}
+header.h .group {
+  grid-template: subgrid/subgrid;
+  grid-column-end: span 4;
+  grid-row: 1/3;
+}
+header.h .group h1 {
+  margin: 0;
+  line-height: 1;
+  display: grid;
+  grid-column: 1/-1;
+  place-items: center;
+}
+header.h .group .element {
+  writing-mode: sideways-lr;
+  place-items: center start;
+}
+
+header.v {
+  grid-row: 3/-1;
+  grid-template: subgrid/subgrid;
+  grid-column: 1/3;
+}
+header.v .group {
+  grid-template: subgrid/subgrid;
+  grid-row-end: span 4;
+  grid-column: 1/3;
+}
+header.v .group h1 {
+  margin: 0;
+  line-height: 1;
+  display: grid;
+  grid-row: 1/-1;
+  place-items: center;
+  writing-mode: sideways-lr;
+}
+header.v .group .element {
+  place-items: center start;
+}
+
+.checks .group {
+  grid-template: subgrid/subgrid;
+  grid-row-end: span 4;
+  grid-column-end: span 4;
+}
+.checks .cell {
+  border: 1px solid #999;
+}
+
+.header-h,
+.header-v {
+  display: contents;
+}
+.header-h h1,
+.header-v h1 {
+  margin: -0.5pt;
+  font-size: 1em;
+  line-height: 1.5;
+  text-align: center;
+  border: none;
+}
+.header-h .element,
+.header-v .element {
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+.header-h h1 {
+  grid-column: var(--gc)/span var(--nb-elements);
+  grid-row: 1;
+}
+.header-h .element {
+  grid-row: 2;
+  grid-column: calc(var(--gc) + var(--c));
+  writing-mode: vertical-lr;
+  transform: scale(-1);
+  padding: 0.25em 0;
+}
+
+.header-v h1 {
+  grid-column: 1;
+  writing-mode: vertical-lr;
+  transform: scale(-1);
+  grid-row: var(--gr)/span var(--nb-elements);
+}
+.header-v .element {
+  grid-row-start: 3;
+  grid-row: calc(var(--gr) + var(--r));
+  padding: 0 0.25em;
+}
+
+zzz .checks {
+  display: contents;
+}
+zzz .checks .group div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: calc(var(--gr) + var(--r))/calc(var(--gc) + var(--c));
+}
+zzz .checks .group div::before {
+  font-size: 1em;
+  line-height: 0;
+  position: absolute;
+}
+zzz .checks .group div.X {
+  background-color: #f00 !important;
+}
+zzz .checks .group div.X::before {
+  content: "✘";
+}
+zzz .checks .group div.O {
+  background-color: #0f0 !important;
+}
+zzz .checks .group div.O::before {
+  content: "✔";
+}
+zzz .checks .group div.auto {
+  opacity: 0.5;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="shortcut icon" href="favicon.svg" type="image/svg+xml" />
+	<link rel="stylesheet" href="./css/style.css" />
+	<script type="module" src="./index.js"></script>
+	<script type="module">
+		import App from "./src/App.js";
+		App.main();
+	</script>
+	<title>Riddle</title>
+</head>
+
+<body>
+	<div id="interface">
+		<header>
+			<img src="logo_riddle.svg" alt="" style="height: 3em;">
+			<h1>Riddle</h1>
+		</header>
+		<nav>
+			<ul>
+				<li><a href="">Home</a></li>
+				<li><a href="">Lorem</a></li>
+				<li><a href="">Ipsum</a></li>
+			</ul>
+		</nav>
+		<main id="app">
+			<r-riddle href="data/aeroport.xml"></r-riddle>
+		</main>
+		<footer><span>&copy; BoBanum</span><strong>Riddle</strong></footer>
+	</div>
+</body>
+
+</html>
